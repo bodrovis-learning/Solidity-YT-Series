@@ -25,7 +25,7 @@ contract Payments {
         return balances[_addr].payments[_index];
     }
 
-    function pay(string memory message) public payable {
+    function pay(string memory message) public payable returns(uint) {
         uint paymentNum = balances[msg.sender].totalPayments;
         balances[msg.sender].totalPayments++;
 
@@ -37,5 +37,7 @@ contract Payments {
         );
 
         balances[msg.sender].payments[paymentNum] = newPayment;
+
+        return msg.value;
     }
 }
