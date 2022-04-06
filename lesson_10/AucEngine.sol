@@ -27,13 +27,6 @@ contract AucEngine {
     constructor() {
         owner = msg.sender;
     }
-    modifier onlyOwner() {
-        require();
-        _;
-    }
-    function withdraw() external onlyOwner {
-        //...
-    }
 
     function createAuction(uint _startingPrice, uint _discountRate, string memory _item, uint _duration) external {
         uint duration = _duration == 0 ? DURATION : _duration;
