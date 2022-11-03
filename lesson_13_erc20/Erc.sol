@@ -84,8 +84,8 @@ contract ERC20 is IERC20 {
 
     function transferFrom(address sender, address recipient, uint amount) public enoughTokens(sender, amount) {
         _beforeTokenTransfer(sender, recipient, amount);
-        //require(allowances[sender][recipient] >= amount, "check allowance!");
-        allowances[sender][recipient] -= amount; // error!
+        //require(allowances[sender][msg.sender] >= amount, "check allowance!");
+        allowances[sender][msg.sender] -= amount; // error!
 
         balances[sender] -= amount;
         balances[recipient] += amount;
