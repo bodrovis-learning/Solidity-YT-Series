@@ -28,6 +28,7 @@ console.log(ethers.decodeBytes32String(encoded));
 const abi = [
   "function foo(address bar)",
   "function foo(uint160 bar)",
+  "function bar(address addr)",
 ]
 
 const contract = new ethers.Contract("0x...", abi, provider);
@@ -39,3 +40,13 @@ contract["foo(address)"]("0x0000") // OK, v6
 contract["foo(address addr)"]("0x0000") // OK, v6
 contract.foo(Typed.address("0x000")) // v6
 contract.foo(Typed.uint160(100n));
+
+// v5
+// contract.staticCall.bar("0x000");
+// contract.estimateGas.bar("0x000");
+
+// v6
+
+contract.bar.staticCall("0x000")
+contract.bar.send("0x000")
+contract.bar.estimateGas("0x000")
