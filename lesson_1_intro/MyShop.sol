@@ -17,8 +17,6 @@ contract MyShop {
     }
 
     function withdrawAll() public {
-        address payable _to = payable(owner);
-        address _thisContract = address(this);
-        _to.transfer(_thisContract.balance);
+        payable(owner).transfer(address(this).balance));
     }
 }
