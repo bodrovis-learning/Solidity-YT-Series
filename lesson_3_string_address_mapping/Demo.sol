@@ -23,7 +23,7 @@ contract Demo {
         return targetAddr.balance;
     }
 		
-		MAPPINGS:
+		// MAPPINGS
 		
     mapping (address => uint) public payments; // storage
 
